@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-vars */
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import useAuth from "../../hooks/useAuth"
 import toast from "react-hot-toast";
 const Registration = () => {
     const {createUser, signInWithGoogle, updateUserProfile} = useAuth();
+    const navigate = useNavigate()
     const handleRegister = e => {
         e.preventDefault()
         const form = e.target;
@@ -15,13 +16,21 @@ const Registration = () => {
         .then(() => {
             updateUserProfile(name, photoURL)
             toast.success("Successfully register !!")
+            navigate('/')
         })
         .catch(err => {
             toast.error(err?.message);
         })
     }
     const handleGoogleSignIn = () => {
-        
+        signInWithGoogle()
+        .then(() => {
+            toast.success('Successfully register')
+            navigate('/')
+        })
+        .catch(err => {
+            toast.error(err?.message);
+        })
     }
     return (
         <div className='my-5 md:my-8 lg:my-10 flex justify-center items-center min-h-[calc(100vh-80px)]'>
