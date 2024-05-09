@@ -1,8 +1,10 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
-    const { user } = useAuth()
+    const { user, logOut } = useAuth()
+    const navigate = useNavigate()
     const navLinks =
         <>
             <li>
@@ -46,6 +48,16 @@ const Navbar = () => {
                 </NavLink>
             </li>
         </>
+    const handleLogOut = () => {
+        logOut()
+        .then(() => {
+            toast.success("Logout successfully")
+            navigate('/')
+        })
+        .catch(err => {
+            toast.error(err?.message)
+        })
+    }
     return (
         <div className="bg-base-100 max-w-7xl px-5 py-2 mx-auto">
             <div className="navbar">
@@ -87,7 +99,7 @@ const Navbar = () => {
                                     className='menu menu-sm dropdown-content mt-3 z-30 p-2 shadow bg-base-100 rounded-box w-52'
                                 >
                                     <li className='mt-2'>
-                                        <button className='bg-gray-200 block text-center'>Logout</button>
+                                        <button onClick={handleLogOut} className='bg-gray-200 block text-center'>Logout</button>
                                     </li>
                                 </ul>
                             </div>
