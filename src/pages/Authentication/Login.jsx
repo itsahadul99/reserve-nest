@@ -3,7 +3,7 @@ import useAuth from "../../hooks/useAuth"
 import toast from "react-hot-toast"
 
 const Login = () => {
-    const {logIn} = useAuth()
+    const {logIn, signInWithGoogle} = useAuth()
     const navigate = useNavigate()
     const handleLogIn = e => {
         e.preventDefault()
@@ -20,7 +20,14 @@ const Login = () => {
         })
     }
     const handleGoogleLogin = () => {
-        
+        signInWithGoogle()
+        .then(() => {
+            toast.success('Successfully login by google')
+            navigate('/')
+        })
+        .catch(err => {
+            toast.error(err?.message);
+        })
     }
     return (
         <div className='flex justify-center items-center min-h-[calc(100vh-80px)]'>
