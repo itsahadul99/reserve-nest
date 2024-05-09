@@ -1,9 +1,26 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import useAuth from "../../hooks/useAuth"
+import toast from "react-hot-toast"
 
 const Login = () => {
+    const {logIn} = useAuth()
+    const navigate = useNavigate()
     const handleLogIn = e => {
         e.preventDefault()
-        console.log("coming soon");
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        logIn(email, password)
+        .then(() => {
+            toast.success("Login successfully")
+            navigate('/')
+        })
+        .catch(err => {
+            toast.error(err?.message)
+        })
+    }
+    const handleGoogleLogin = () => {
+        
     }
     return (
         <div className='flex justify-center items-center min-h-[calc(100vh-80px)]'>
@@ -24,7 +41,9 @@ const Login = () => {
                         Welcome back!
                     </p>
 
-                    <div className='flex cursor-pointer items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg   hover:bg-gray-50 '>
+                    <div 
+                    onClick={handleGoogleLogin}
+                    className='flex cursor-pointer items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg   hover:bg-gray-50 '>
                         <div className='px-4 py-2'>
                             <svg className='w-6 h-6' viewBox='0 0 40 40'>
                                 <path
