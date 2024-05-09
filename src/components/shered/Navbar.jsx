@@ -1,6 +1,8 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
+    const { user } = useAuth()
     const navLinks =
         <>
             <li>
@@ -56,7 +58,7 @@ const Navbar = () => {
                             {navLinks}
                         </ul>
                     </div>
-                    <a className="cursor-pointer text-lg md:text-2xl lg:text-3xl font-bold">Reserve<span className="text-[#91D9D0]">Nest</span></a>
+                    <h1 className="cursor-pointer text-lg md:text-2xl lg:text-3xl font-bold">Reserve<span className="text-[#91D9D0]">Nest</span></h1>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="flex items-center justify-center gap-3 md:gap-6">
@@ -64,7 +66,34 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end gap-2 md:gap-4">
-                    <button className="px-2 md:px-4 py-1 md:py-2 bg-[#91D9D0] hover:bg-[#5beeddd4] duration-300 rounded-md text-xs font-medium md:text-lg text-white">Login</button>
+                    {
+                        user ?
+                            <div className='dropdown dropdown-end z-50'>
+                                <div
+                                    tabIndex={0}
+                                    role='button'
+                                    className='btn btn-ghost btn-circle avatar'
+                                >
+                                    <div className='w-10 rounded-full' title=''>
+                                        <img
+                                            referrerPolicy='no-referrer'
+                                            alt='User Profile Photo'
+                                            src={user?.photoURL}
+                                        />
+                                    </div>
+                                </div>
+                                <ul
+                                    tabIndex={0}
+                                    className='menu menu-sm dropdown-content mt-3 z-30 p-2 shadow bg-base-100 rounded-box w-52'
+                                >
+                                    <li className='mt-2'>
+                                        <button className='bg-gray-200 block text-center'>Logout</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            :
+                            <Link to="/login" className="px-2 md:px-4 py-1 md:py-2 bg-[#91D9D0] hover:bg-[#5beeddd4] duration-300 rounded-md text-xs font-medium md:text-lg text-white">Login</Link>
+                    }
                 </div>
             </div>
         </div>
