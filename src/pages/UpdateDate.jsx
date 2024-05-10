@@ -14,8 +14,8 @@ const UpdateDate = () => {
         if(newDate === data?.booking_date){
             return toast.error('You cannot choice same date')
         }
-        const updateData = {booking_date: newDate}
-        axios.patch(`${import.meta.env.VITE_API_URL}/update-date/${id}`, updateData)
+        const updateData = {update_date: newDate}
+        axios.put(`${import.meta.env.VITE_API_URL}/update-date/${id}`, updateData)
         .then(res => {
             if(res.data.modifiedCount > 0){
                 toast.success('Successfully update booking date');

@@ -40,6 +40,7 @@ const MyBookings = () => {
         });
 
     }
+    console.log(displayBooking);
     return (
         <div className="max-w-7xl mx-auto min-h-[calc(100vh-365px)] px-5 my-5 md:my-8 lg:my-10">
             <div className="overflow-x-auto">
