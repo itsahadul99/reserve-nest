@@ -25,7 +25,7 @@ const ContactUs = () => {
 
                                 <h2 className="mt-4 text-sm md:text-lg lg:text-xl font-medium text-gray-800 ">Email</h2>
                                 <p className="mt-2 text-sm md:text-sm lg:text-lg text-gray-500">Our friendly team is here to help.</p>
-                                <p className="mt-2 text-sm md:text-sm lg:text-lg text-[#69e9da]">hello@merakiui.com</p>
+                                <p className="mt-2 text-sm md:text-sm lg:text-lg text-[#69e9da]">servenest@gamil.com</p>
                             </div>
 
                             <div>
@@ -45,7 +45,7 @@ const ContactUs = () => {
 
                                 <h2 className="mt-4 text-sm md:text-lg lg:text-xl font-medium text-gray-800 ">Office</h2>
                                 <p className="mt-2 text-sm md:text-sm lg:text-lg text-gray-500">Come say hello at our office HQ.</p>
-                                <p className="mt-2 text-sm md:text-sm lg:text-lg text-[#69e9da]">100 Smith Street Collingwood VIC 3066 AU</p>
+                                <p className="mt-2 text-sm md:text-sm lg:text-lg text-[#69e9da]">100/330 Cox Bazar, Bangladesh</p>
                             </div>
 
                             <div>
@@ -55,7 +55,7 @@ const ContactUs = () => {
 
                                 <h2 className="mt-4 text-sm md:text-sm lg:text-xl font-medium text-gray-800 ">Phone</h2>
                                 <p className="mt-2 text-sm md:text-sm lg:text-lg text-gray-500">Mon-Fri from 8am to 5pm.</p>
-                                <p className="mt-2 text-sm md:text-sm lg:text-lg text-[#69e9da]">+1 (555) 000-0000</p>
+                                <p className="mt-2 text-sm md:text-sm lg:text-lg text-[#69e9da]">+88 019672724</p>
                             </div>
                         </div>
 
@@ -64,18 +64,18 @@ const ContactUs = () => {
                                 <div className="-mx-2 md:items-center md:flex">
                                     <div className="flex-1 px-2">
                                         <label className="block mb-2 text-sm md:text-sm lg:text-lg text-gray-600 -200">First Name</label>
-                                        <input type="text" placeholder="John " className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gra bg-white border border-gray-200" />
+                                        <input type="text" placeholder="First name" className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gra bg-white border border-gray-200" />
                                     </div>
 
                                     <div className="flex-1 px-2 mt-4 md:mt-0">
                                         <label className="block mb-2 text-sm md:text-sm lg:text-lg text-gray-600 -200">Last Name</label>
-                                        <input type="text" placeholder="Doe" className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gra bg-white border border-gray-200" />
+                                        <input type="text" placeholder="Last name" className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gra bg-white border border-gray-200" />
                                     </div>
                                 </div>
 
                                 <div className="mt-4">
                                     <label className="block mb-2 text-sm md:text-sm lg:text-lg text-gray-600 -200">Email address</label>
-                                    <input type="email" placeholder="johndoe@example.com" className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gra bg-white border border-gray-200" />
+                                    <input type="email" placeholder="Enter your email" className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gra bg-white border border-gray-200" />
                                 </div>
 
                                 <div className="w-full mt-4">
