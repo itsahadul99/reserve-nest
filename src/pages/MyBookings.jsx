@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const MyBookings = () => {
     const { user } = useAuth();
@@ -63,8 +64,13 @@ const MyBookings = () => {
                                         onClick={() => handleCancelButton(data?._id)}
                                         className="px-2 md:px-4 py-1 md:py-2 bg-[#91D9D0] hover:bg-[#5beeddd4] duration-300 rounded-md text-xs font-medium text-white"
                                     >Cancel</button>
-                                    <button className="px-2 md:px-4 py-1 md:py-2 bg-[#91D9D0] hover:bg-[#5beeddd4] duration-300 rounded-md text-xs font-medium text-white">Update Date</button>
-                                    <button className="px-2 md:px-4 py-1 md:py-2 bg-[#91D9D0] hover:bg-[#5beeddd4] duration-300 rounded-md text-xs font-medium text-white">Review</button>
+                                    <Link to={`/update-date/${data?._id}`} 
+                                    className="px-2 md:px-4 py-1 md:py-2 bg-[#91D9D0] hover:bg-[#5beeddd4] duration-300 rounded-md text-xs font-medium text-white"
+                                    >Update Date</Link>
+                                    <button 
+
+                                    className="px-2 md:px-4 py-1 md:py-2 bg-[#91D9D0] hover:bg-[#5beeddd4] duration-300 rounded-md text-xs font-medium text-white"
+                                    >Review</button>
                                 </td>
                             </tr>)
                         }

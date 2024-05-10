@@ -22,7 +22,7 @@ const Banner = () => {
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}>
             <SwiperSlide>
-                <div className="hero min-h-[calc(100vh-90px)]" style={{ backgroundImage: `url(${bg1})` }}>
+                <div className="hero min-h-[calc(100vh-120px)]" style={{ backgroundImage: `url(${bg1})` }}>
                     <div className="hero-overlay bg-opacity-40"></div>
                     <div className="hero-content text-center text-white">
                         <div className="max-w-md">
@@ -34,7 +34,7 @@ const Banner = () => {
                 </div>
             </SwiperSlide>
             <SwiperSlide>
-                <div className="hero min-h-[calc(100vh-90px)]" style={{ backgroundImage: `url(${bg2})` }}>
+                <div className="hero min-h-[calc(100vh-120px)]" style={{ backgroundImage: `url(${bg2})` }}>
                     <div className="hero-overlay bg-opacity-40"></div>
                     <div className="hero-content text-center text-white">
                         <div className="max-w-md">
@@ -46,7 +46,7 @@ const Banner = () => {
                 </div>
             </SwiperSlide>
             <SwiperSlide>
-                <div className="hero min-h-[calc(100vh-90px)]" style={{ backgroundImage: `url(${bg3})` }}>
+                <div className="hero min-h-[calc(100vh-120px)]" style={{ backgroundImage: `url(${bg3})` }}>
                     <div className="hero-overlay bg-opacity-40"></div>
                     <div className="hero-content text-center text-white">
                         <div className="max-w-md">

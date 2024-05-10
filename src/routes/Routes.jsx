@@ -10,6 +10,7 @@ import Rooms from "../pages/Rooms";
 import RoomDetails from "../pages/RoomDetails";
 import PrivateRoute from "./PrivateRoute";
 import MyBookings from "../pages/MyBookings";
+import UpdateDate from "../pages/UpdateDate";
 
 const router = createBrowserRouter([
     {
@@ -49,7 +50,12 @@ const router = createBrowserRouter([
             },
             {
                 path: '/my-bookings',
-                element: <MyBookings />
+                element: <PrivateRoute><MyBookings /></PrivateRoute>
+            },
+            {
+                path: '/update-date/:id',
+                element: <UpdateDate />,
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/update-date/${params.id}`)
             }
         ]
     }
