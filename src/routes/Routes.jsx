@@ -9,6 +9,7 @@ import AboutUs from "../pages/AboutUs";
 import Rooms from "../pages/Rooms";
 import RoomDetails from "../pages/RoomDetails";
 import PrivateRoute from "./PrivateRoute";
+import MyBookings from "../pages/MyBookings";
 
 const router = createBrowserRouter([
     {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
                 path: '/rooms/:id',
                 element: <PrivateRoute><RoomDetails /></PrivateRoute>,
                 loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/rooms/${params.id}`)
+            },
+            {
+                path: '/my-bookings',
+                element: <MyBookings />
             }
         ]
     }
