@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 const Rooms = () => {
     const rooms = useLoaderData();
     return (
@@ -52,7 +52,7 @@ const Rooms = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8 items-center my-5 md:my-8 lg:my-10">
                 {
                     rooms.map(room =>
-                        <div key={room._id} className="card card-compact bg-base-100 shadow-lg hover:scale-105 duration-500 cursor-pointer">
+                        <Link to={`/rooms/${room._id}`} key={room._id} className="card card-compact bg-base-100 shadow-lg hover:scale-105 duration-500 cursor-pointer">
                             <div className="px-5 *:rounded-md">
                                 <img className="w-[350px] h-[250px]" src={room?.room_img} alt="Room Img" />
                             </div>
@@ -60,7 +60,7 @@ const Rooms = () => {
                                 <h3>Total Reviews:</h3>
                                 <h3>{room?.total_review}</h3>
                             </div>
-                        </div>
+                        </Link>
                     )
                 }
             </div>

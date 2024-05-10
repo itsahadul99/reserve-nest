@@ -1,9 +1,11 @@
-import { Link, useNavigate } from "react-router-dom"
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom"
 import useAuth from "../../hooks/useAuth"
 import toast from "react-hot-toast"
 
 const Login = () => {
-    const {logIn, signInWithGoogle} = useAuth()
+    const {logIn, signInWithGoogle, user, loading} = useAuth()
+    const location = useLocation();
+    console.log(location);
     const navigate = useNavigate()
     const handleLogIn = e => {
         e.preventDefault()
@@ -13,7 +15,7 @@ const Login = () => {
         logIn(email, password)
         .then(() => {
             toast.success("Login successfully")
-            navigate('/')
+            navigate(location?.state ? location?.state : '/')
         })
         .catch(err => {
             toast.error(err?.message)
@@ -23,12 +25,15 @@ const Login = () => {
         signInWithGoogle()
         .then(() => {
             toast.success('Successfully login by google')
-            navigate('/')
+            navigate(location?.state ? location?.state : '/')
         })
         .catch(err => {
             toast.error(err?.message);
         })
     }
+    if(user || loading){
+        return <Navigate to="/"></Navigate>;
+      }
     return (
         <div className='flex justify-center items-center min-h-[calc(100vh-80px)]'>
             <div className='flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl '>

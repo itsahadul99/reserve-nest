@@ -7,6 +7,8 @@ import Registration from "../pages/Authentication/Registration";
 import ContactUs from "../pages/ContactUs";
 import AboutUs from "../pages/AboutUs";
 import Rooms from "../pages/Rooms";
+import RoomDetails from "../pages/RoomDetails";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -38,6 +40,11 @@ const router = createBrowserRouter([
                 path: '/rooms',
                 element: <Rooms />,
                 loader: () => fetch(`${import.meta.env.VITE_API_URL}/rooms`)
+            },
+            {
+                path: '/rooms/:id',
+                element: <PrivateRoute><RoomDetails /></PrivateRoute>,
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/rooms/${params.id}`)
             }
         ]
     }

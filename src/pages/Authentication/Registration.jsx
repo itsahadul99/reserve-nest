@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
-import { Link, useNavigate } from "react-router-dom"
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom"
 import useAuth from "../../hooks/useAuth"
 import toast from "react-hot-toast";
 const Registration = () => {
-    const {createUser, signInWithGoogle, updateUserProfile} = useAuth();
+    const {createUser, signInWithGoogle, updateUserProfile, user, loading} = useAuth();
     const navigate = useNavigate()
+    const location = useLocation()
     const handleRegister = e => {
         e.preventDefault()
         const form = e.target;
@@ -16,7 +17,7 @@ const Registration = () => {
         .then(() => {
             updateUserProfile(name, photoURL)
             toast.success("Successfully register !!")
-            navigate('/')
+            navigate(location?.state ? location?.state : '/')
         })
         .catch(err => {
             toast.error(err?.message);
@@ -26,12 +27,15 @@ const Registration = () => {
         signInWithGoogle()
         .then(() => {
             toast.success('Successfully register')
-            navigate('/')
+            navigate(location?.state ? location?.state : '/')
         })
         .catch(err => {
             toast.error(err?.message);
         })
     }
+    if(user || loading){
+        return <Navigate to="/"></Navigate>;
+      }
     return (
         <div className='my-5 md:my-8 lg:my-10 flex justify-center items-center min-h-[calc(100vh-80px)]'>
             <div className='flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl '>
