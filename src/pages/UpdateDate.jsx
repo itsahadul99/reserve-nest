@@ -24,6 +24,7 @@ const UpdateDate = () => {
         })
 
     }
+    console.log(data);
     return (
         <div className="max-w-7xl mx-auto min-h-[calc(100vh-365px)] px-5 my-5 md:my-8 lg:my-10">
             <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-center">Update Your Booked Date </h1>

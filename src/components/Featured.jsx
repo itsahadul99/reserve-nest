@@ -5,7 +5,7 @@ const Featured = () => {
                 <h1 className="text-xl md:text-2xl lg:text-4xl font-bold my-5 mb-8 text-center">Our Featured Room</h1>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
-                <div className="flex flex-col gap-2 border items-center hover:shadow-2xl px-3 py-2">
+                <div className="flex flex-col gap-2 border rounded-md items-center hover:shadow-2xl px-3 py-2">
                     <img
                         src="https://i.ibb.co/fNhPcJY/feature1.jpg"
                         alt="Room img"
@@ -25,7 +25,7 @@ const Featured = () => {
                         Book Now
                     </button>
                 </div>
-                <div className="flex flex-col gap-2 border items-center hover:shadow-2xl px-3 py-2">
+                <div className="flex flex-col gap-2 border items-center hover:shadow-2xl px-3 py-2 rounded-md">
                     <img
                         src="https://i.ibb.co/LRFFcXn/featured2.jpg"
                         alt="Room img"
@@ -35,7 +35,7 @@ const Featured = () => {
                         Book Now
                     </button>
                 </div>
-                <div className="flex flex-col gap-2 border items-center hover:shadow-2xl px-3 py-2">
+                <div className="flex flex-col gap-2 border items-center hover:shadow-2xl px-3 py-2 rounded-md">
                     <img
                         src="https://i.ibb.co/0XbSxtQ/feature5.jpg"
                         alt="Room img"

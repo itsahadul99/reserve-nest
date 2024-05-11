@@ -40,7 +40,6 @@ const MyBookings = () => {
         });
 
     }
-    console.log(displayBooking);
     return (
         <div className="max-w-7xl mx-auto min-h-[calc(100vh-365px)] px-5 my-5 md:my-8 lg:my-10">
             <div className="overflow-x-auto">
@@ -65,13 +64,13 @@ const MyBookings = () => {
                                         onClick={() => handleCancelButton(data?._id)}
                                         className="px-2 md:px-4 py-1 md:py-2 bg-[#91D9D0] hover:bg-[#5beeddd4] duration-300 rounded-md text-xs font-medium text-white"
                                     >Cancel</button>
-                                    <Link to={`/update-date/${data?._id}`} 
-                                    className="px-2 md:px-4 py-1 md:py-2 bg-[#91D9D0] hover:bg-[#5beeddd4] duration-300 rounded-md text-xs font-medium text-white"
+                                    <Link to={`/update-date/${data?._id}`}
+                                        className="px-2 md:px-4 py-1 md:py-2 bg-[#91D9D0] hover:bg-[#5beeddd4] duration-300 rounded-md text-xs font-medium text-white"
                                     >Update Date</Link>
-                                    <button 
-
-                                    className="px-2 md:px-4 py-1 md:py-2 bg-[#91D9D0] hover:bg-[#5beeddd4] duration-300 rounded-md text-xs font-medium text-white"
-                                    >Review</button>
+                                    <Link
+                                        to={`/review/${data?._id}`}
+                                        className="px-2 md:px-4 py-1 md:py-2 bg-[#91D9D0] hover:bg-[#5beeddd4] duration-300 rounded-md text-xs font-medium text-white"
+                                    >Review</Link>
                                 </td>
                             </tr>)
                         }

@@ -11,6 +11,7 @@ import RoomDetails from "../pages/RoomDetails";
 import PrivateRoute from "./PrivateRoute";
 import MyBookings from "../pages/MyBookings";
 import UpdateDate from "../pages/UpdateDate";
+import ReviewProduct from "../pages/ReviewProduct";
 
 const router = createBrowserRouter([
     {
@@ -55,6 +56,11 @@ const router = createBrowserRouter([
             {
                 path: '/update-date/:id',
                 element: <UpdateDate />,
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/update-date/${params.id}`)
+            },
+            {
+                path: '/review/:id',
+                element: <ReviewProduct />,
                 loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/update-date/${params.id}`)
             }
         ]
