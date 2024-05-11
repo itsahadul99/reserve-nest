@@ -19,7 +19,7 @@ const MyBookings = () => {
             text: "You won't be able to revert this!",
             icon: "warning",
             showCancelButton: true,
-            confirmButtonColor: "#3085d6",
+            confirmButtonColor: "#91D9D0",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, cancel it!"
         }).then((result) => {

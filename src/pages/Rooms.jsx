@@ -1,8 +1,17 @@
 /* eslint-disable react/no-unescaped-entities */
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Zoom } from "react-awesome-reveal";
 import { Link, useLoaderData } from "react-router-dom";
 const Rooms = () => {
     const rooms = useLoaderData();
+    const [reviewData, setReviewData] = useState([])
+    useEffect(() => {
+        axios(`${import.meta.env.VITE_API_URL}/reviews`)
+        .then(res => {
+            setReviewData(res.data)
+        })
+    }, [])
     const handleLowPrice = () => {
 
     }
@@ -74,7 +83,9 @@ const Rooms = () => {
                                 </div>
                                 <div className="flex justify-between items-center py-5 text-lg md:text-xl font-semibold px-5">
                                     <h3>Total Reviews:</h3>
-                                    <h3>{room?.total_review}</h3>
+                                    <h3>{
+                                        reviewData.filter(i => i?._room_title === room?.room_title)
+                                        }</h3>
                                 </div>
                             </Link>
                         </Zoom>

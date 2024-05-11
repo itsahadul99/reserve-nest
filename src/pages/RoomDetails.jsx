@@ -4,13 +4,24 @@ import useAuth from "../hooks/useAuth";
 import axios from "axios";
 import { FaStar } from "react-icons/fa";
 import { Zoom } from "react-awesome-reveal";
+import { useEffect, useState } from "react";
 
 const RoomDetails = () => {
     const { user } = useAuth();
     const roomData = useLoaderData();
     const { room_title, room_img, description, price_per_night, availability, special_offer, room_size } = roomData;
+    const [reviewData, setReviewData] = useState([])
     const navigate = useNavigate()
+    useEffect(() => {
+        axios(`${import.meta.env.VITE_API_URL}/reviews`)
+            .then(res => {
+                setReviewData(res.data);
+            })
+    }, [])
     const handleBookNow = (e) => {
+        if(!user){
+            return navigate('/login')
+        }
         e.preventDefault();
         if (availability === 'unavailable') {
             return Swal.fire({
@@ -22,11 +33,11 @@ const RoomDetails = () => {
         const booking_date = e.target.email.value;
         const bookingData = { booking_email: user?.email, booking_date, room_title, price_per_night, }
         Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
+            title: `Room Summary`,
+            text: `Price per night: ${price_per_night}, Booking-date: ${booking_date}
+            Description: ${description}`,
             showCancelButton: true,
-            confirmButtonColor: "#3085d6",
+            confirmButtonColor: "#91D9D0",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, Book it!"
         }).then((result) => {
@@ -48,6 +59,7 @@ const RoomDetails = () => {
             }
         });
     }
+    const filter = reviewData.filter(i => i?.room_title === room_title);
     return (
         <div className="max-w-7xl mx-auto min-h-[calc(100vh-365px)] px-5 my-5 md:my-8 lg:my-10">
             <div className="space-y-5 flex flex-col md:flex-row gap-5 justify-between items-start md:gap-10">
@@ -76,23 +88,35 @@ const RoomDetails = () => {
             </div>
             <div>
                 <h1 className="text-lg md:text-xl lg:text-2xl font-medium">Reviews:</h1>
-                <p className="text-sm md:text-lg font-medium my-2">5 Reviews For this room </p>
+                <p className="text-sm md:text-lg font-medium my-2">{filter.length} Reviews For this room </p>
                 {/* review showcase */}
                 <div>
-                    <div className="flex gap-5 lg:gap-8 items-center space-y-3 border-y py-2">
-
-                        <img className="rounded-full size-20" src="https://i.ibb.co/Vjg1dWq/profile-pic-3.png" alt="" />
-                        <div className="space-y-2">
-                            <h1 className="text-lg md:text-xl font-bold">Reviewer name</h1>
-                            <div className="flex gap-2 items-center text-orange-400">
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
+                    {
+                        filter?.map(r => <div key={r._id} className="flex gap-5 lg:gap-8 items-center space-y-3 border-t my-3 py-2">
+                            <img className="rounded-full size-20" src={r?.user_profile_img} alt="" />
+                            <div className="space-y-2">
+                                <h1 className="text-lg md:text-xl font-bold">{r?.user_name}</h1>
+                                <div className="flex gap-2 items-center text-orange-400">
+                                    {
+                                        r?.rating === '1' && <FaStar />
+                                    }
+                                    {
+                                        r?.rating === '2' && <><FaStar /> <FaStar /></>
+                                    }
+                                    {
+                                        r?.rating === '3' && <><FaStar /> <FaStar /> <FaStar /></>
+                                    }
+                                    {
+                                        r?.rating === '4' && <><FaStar /> <FaStar /> <FaStar /> <FaStar /></>
+                                    }
+                                    {
+                                        r?.rating === '5' && <><FaStar /> <FaStar /> <FaStar /> <FaStar /><FaStar /></>
+                                    }
+                                </div>
+                                <p className="text-sm font-medium">{r?.comment}</p>
                             </div>
-                            <p className="text-sm font-medium">review here......</p>
-                        </div>
-                    </div>
+                        </div>)
+                    }
                 </div>
             </div>
         </div>
