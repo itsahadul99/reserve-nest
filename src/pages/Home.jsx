@@ -1,6 +1,7 @@
 import Banner from "../components/Banner";
 import Featured from "../components/Featured";
 import MapLocation from "../components/MapLocation";
+import NewsLetter from "../components/NewsLetter";
 import ScrollModal from "../components/ScrollModal";
 
 const Home = () => {
@@ -9,6 +10,7 @@ const Home = () => {
             <ScrollModal />
             <Banner />
             <Featured />
+            <NewsLetter />
             <MapLocation />
         </div>
     );

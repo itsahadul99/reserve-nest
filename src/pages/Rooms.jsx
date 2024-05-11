@@ -1,13 +1,28 @@
 /* eslint-disable react/no-unescaped-entities */
+import { Zoom } from "react-awesome-reveal";
 import { Link, useLoaderData } from "react-router-dom";
 const Rooms = () => {
     const rooms = useLoaderData();
+    const handleLowPrice = () => {
+
+    }
+    const handleHighPrice = () => {
+
+    }
     return (
         <div className="max-w-7xl mx-auto min-h-[calc(100vh-365px)] px-5">
             <div className="flex justify-between items-center my-5">
                 <h1 className="text-lg md:text-2xl lg:text-3xl font-bold">Our's Rooms</h1>
-                <div className="flex gap-3 items-center">
-
+                <div>
+                    <div className="dropdown dropdown-left">
+                        <div tabIndex={0} role="button"
+                            className="px-2 md:px-4 py-1 md:py-2 bg-[#91D9D0] hover:bg-[#5beeddd4] duration-300 rounded-md text-xs font-medium md:text-lg text-white"
+                        >Filter</div>
+                        <ul tabIndex={0} className="dropdown-content z-20 menu p-2 shadow bg-base-100 rounded-box w-52">
+                            <li><a onClick={handleLowPrice}>Low Price </a></li>
+                            <li><a onClick={handleHighPrice}>High Price</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             {/* <div className="overflow-x-auto">
@@ -52,15 +67,17 @@ const Rooms = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8 items-center my-5 md:my-8 lg:my-10">
                 {
                     rooms.map(room =>
-                        <Link to={`/rooms/${room._id}`} key={room._id} className="card card-compact bg-base-100 shadow-lg hover:scale-105 duration-500 cursor-pointer">
-                            <div className="px-5 *:rounded-md">
-                                <img className="w-[350px] h-[250px]" src={room?.room_img} alt="Room Img" />
-                            </div>
-                            <div className="flex justify-between items-center py-5 text-lg md:text-xl font-semibold px-5">
-                                <h3>Total Reviews:</h3>
-                                <h3>{room?.total_review}</h3>
-                            </div>
-                        </Link>
+                        <Zoom key={room._id} duration={1500}>
+                            <Link to={`/rooms/${room._id}`} className="card card-compact bg-base-100 shadow-lg hover:scale-105 duration-500 cursor-pointer">
+                                <div className="px-5 *:rounded-md">
+                                    <img className="w-[350px] h-[250px]" src={room?.room_img} alt="Room Img" />
+                                </div>
+                                <div className="flex justify-between items-center py-5 text-lg md:text-xl font-semibold px-5">
+                                    <h3>Total Reviews:</h3>
+                                    <h3>{room?.total_review}</h3>
+                                </div>
+                            </Link>
+                        </Zoom>
                     )
                 }
             </div>

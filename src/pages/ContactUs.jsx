@@ -7,7 +7,7 @@ const ContactUs = () => {
     return (
         <>
             <section className="py-12 max-w-7xl mx-auto">
-                <div className="px-6 shadow-md rounded-lg">
+                <div className="px-6 shadow-sm rounded-lg py-3 border">
                     <div>
                         <p className="font-medium text-[#69e9da] text-lg md:text-xl">Contact us</p>
 
@@ -60,7 +60,7 @@ const ContactUs = () => {
                         </div>
 
                         <div className="p-4 py-6 rounded-lg bg-gray-5-800 md:p-8">
-                            <form>
+                            <form className="shadow-sm rounded-md p-5 border">
                                 <div className="-mx-2 md:items-center md:flex">
                                     <div className="flex-1 px-2">
                                         <label className="block mb-2 text-sm md:text-sm lg:text-lg text-gray-600 -200">First Name</label>

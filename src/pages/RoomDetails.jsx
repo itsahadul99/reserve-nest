@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
 import axios from "axios";
 import { FaStar } from "react-icons/fa";
+import { Zoom } from "react-awesome-reveal";
 
 const RoomDetails = () => {
     const { user } = useAuth();
@@ -46,13 +47,13 @@ const RoomDetails = () => {
 
             }
         });
-
-
     }
     return (
         <div className="max-w-7xl mx-auto min-h-[calc(100vh-365px)] px-5 my-5 md:my-8 lg:my-10">
-            <div className="space-y-5 flex flex-col md:flex-row gap-5 justify-between md:gap-10">
-                <img className="w-full md:w-1/2 bg-cover h-[350px] rounded-md" src={room_img} alt="" />
+            <div className="space-y-5 flex flex-col md:flex-row gap-5 justify-between items-start md:gap-10">
+                <Zoom className="w-full md:w-1/2 mt-5" duration={1200}>
+                    <img className="bg-cover h-[350px] rounded-md" src={room_img} alt="" />
+                </Zoom>
                 <div className="space-y-5">
                     <h1 className="text-lg md:text-xl font-bold">{room_title}</h1>
                     <p className="text-sm md:text-lg font-bold w-full lg:w-2/3">Description: <span className="text-xs md:text-lg font-medium">{description}</span></p>
@@ -79,6 +80,7 @@ const RoomDetails = () => {
                 {/* review showcase */}
                 <div>
                     <div className="flex gap-5 lg:gap-8 items-center space-y-3 border-y py-2">
+
                         <img className="rounded-full size-20" src="https://i.ibb.co/Vjg1dWq/profile-pic-3.png" alt="" />
                         <div className="space-y-2">
                             <h1 className="text-lg md:text-xl font-bold">Reviewer name</h1>
@@ -90,54 +92,6 @@ const RoomDetails = () => {
                             </div>
                             <p className="text-sm font-medium">review here......</p>
                         </div>
-                    </div>
-                    <div>
-                        <form className="lg:w-1/2 my-5 md:my-10 p-5 border border-dotted">
-                            <div className='grid grid-cols-1 gap-6 sm:grid-cols-2'>
-                                <div>
-                                    <label className='text-gray-700 font-semibold' htmlFor='userName'>
-                                        User Name:
-                                    </label>
-                                    <input
-                                        id='userName'
-                                        name='userName'
-                                        type='text'
-                                        disabled
-                                        defaultValue={user?.displayName}
-                                        className='block w-full px-4 py-2 mt-2 text-gray-700 font-medium bg-white border border-gray-200 rounded-md'
-                                    />
-                                </div>
-
-                                <div>
-                                    <label className='text-gray-700 font-semibold' htmlFor='rating'>
-                                        Rating
-                                    </label>
-                                    <select
-                                        id='rating'
-                                        name='rating'
-                                        className='block w-full px-4 py-2 mt-2 font-medium text-gray-700 bg-white border border-gray-200 rounded-md'
-                                    >
-                                        <option value={1}>1</option>
-                                        <option value={2}>2</option>
-                                        <option value={3}>3</option>
-                                        <option value={4}>4</option>
-                                        <option value={5}>5</option>
-                                    </select>
-                                </div>
-                                <div className="col-span-2">
-                                    <label htmlFor="comment" className='text-gray-700 font-semibold'>Comment</label>
-                                    <textarea
-                                        className='block w-full px-4 py-2 mt-2 font-medium text-gray-700 bg-white border border-gray-200 rounded-md h-20'
-                                        name="comment" id="comment"
-                                    ></textarea>
-                                </div>
-                            </div>
-                            <div className='flex justify-end mt-6'>
-                                <button className='px-2 md:px-6 py-1 md:py-2 hover:bg-[#91D9D0] bg-[#5beeddd4] duration-300 rounded-md text-sm md:text-lg font-medium text-white'>
-                                    Post Review
-                                </button>
-                            </div>
-                        </form>
                     </div>
                 </div>
             </div>
