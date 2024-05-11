@@ -13,7 +13,8 @@ const ReviewProduct = () => {
         const form = e.target;
         const comment = form.comment.value;
         const rating = form.rating.value;
-        const reviewData = { comment, rating, user_name: user?.displayName, room_title: data?.room_title, user_profile_img: user?.photoURL }
+        const currentTime = new Date().toLocaleDateString();
+        const reviewData = { comment, rating, user_name: user?.displayName, room_title: data?.room_title, user_profile_img: user?.photoURL, currentTime }
         axios.post(`${import.meta.env.VITE_API_URL}/reviews`, reviewData)
         .then(res => {
             if(res.data.insertedId){

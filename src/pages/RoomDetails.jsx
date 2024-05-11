@@ -19,7 +19,7 @@ const RoomDetails = () => {
             })
     }, [])
     const handleBookNow = (e) => {
-        if(!user){
+        if (!user) {
             return navigate('/login')
         }
         e.preventDefault();
@@ -60,6 +60,7 @@ const RoomDetails = () => {
         });
     }
     const filter = reviewData.filter(i => i?.room_title === room_title);
+    console.log(reviewData);
     return (
         <div className="max-w-7xl mx-auto min-h-[calc(100vh-365px)] px-5 my-5 md:my-8 lg:my-10">
             <div className="space-y-5 flex flex-col md:flex-row gap-5 justify-between items-start md:gap-10">
@@ -95,7 +96,10 @@ const RoomDetails = () => {
                         filter?.map(r => <div key={r._id} className="flex gap-5 lg:gap-8 items-center space-y-3 border-t my-3 py-2">
                             <img className="rounded-full size-20" src={r?.user_profile_img} alt="" />
                             <div className="space-y-2">
-                                <h1 className="text-lg md:text-xl font-bold">{r?.user_name}</h1>
+                                <div className="mb-3">
+                                    <h1 className="text-lg md:text-xl font-bold">{r?.user_name}</h1>
+                                    <p className="text-xs font-medium opacity-80">{r?.currentTime}</p>
+                                </div>
                                 <div className="flex gap-2 items-center text-orange-400">
                                     {
                                         r?.rating === '1' && <FaStar />
