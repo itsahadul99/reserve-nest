@@ -6,9 +6,13 @@ import { MdPets, MdSportsGymnastics } from 'react-icons/md';
 import { IoTvSharp } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 import { Fade, Zoom } from 'react-awesome-reveal';
+import { Helmet } from 'react-helmet-async';
 const AboutUs = () => {
     return (
         <div className='max-w-7xl mx-auto my-5 md:my-8 lg:my-10'>
+            <Helmet>
+                <title>Serve Nest || About Us</title>
+            </Helmet>
             <h1 className="font-bold text-xl md:text-2xl lg:text-3xl text-center my-5">About Us</h1>
             <div>
                 <h1 className='text-lg md:text-xl font-semibold mt-5'>OUR ROOM FACILITIES</h1>

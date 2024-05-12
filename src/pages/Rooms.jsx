@@ -2,37 +2,39 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Zoom } from "react-awesome-reveal";
+import { Helmet } from "react-helmet-async";
 import { Link, useLoaderData } from "react-router-dom";
 const Rooms = () => {
     const rooms = useLoaderData();
     const [reviewData, setReviewData] = useState([])
     useEffect(() => {
         axios(`${import.meta.env.VITE_API_URL}/reviews`)
-        .then(res => {
-            setReviewData(res.data)
-        })
+            .then(res => {
+                setReviewData(res.data)
+            })
     }, [])
-    const handleLowPrice = () => {
-
-    }
-    const handleHighPrice = () => {
-
+    const handleFilter = e => {
+        e.preventDefault();
+        const form = e.target;
+        const lowPrice = form.low_price.value;
+        const highPrice = form.high_price.value;
+        const priceData = {lowPrice, highPrice}
+        console.log(priceData);
     }
     return (
         <div className="max-w-7xl mx-auto min-h-[calc(100vh-365px)] px-5">
+            <Helmet>
+                <title>Serve Nest || Rooms Page</title>
+            </Helmet>
             <div className="flex justify-between items-center my-5">
                 <h1 className="text-lg md:text-2xl lg:text-3xl font-bold">Our's Rooms</h1>
-                <div>
-                    <div className="dropdown dropdown-left">
-                        <div tabIndex={0} role="button"
-                            className="px-2 md:px-4 py-1 md:py-2 bg-[#91D9D0] hover:bg-[#5beeddd4] duration-300 rounded-md text-xs font-medium md:text-lg text-white"
-                        >Filter</div>
-                        <ul tabIndex={0} className="dropdown-content z-20 menu p-2 shadow bg-base-100 rounded-box w-52">
-                            <li><a onClick={handleLowPrice}>Low Price </a></li>
-                            <li><a onClick={handleHighPrice}>High Price</a></li>
-                        </ul>
+                <form onSubmit={handleFilter} className="flex flex-col justify-center items-center space-y-2">
+                    <div>
+                        <input className="border p-1 bg-gray-100 rounded-sm mr-2" type="text" name="low_price" placeholder="Price start" />
+                        <input className="border p-1 bg-gray-100 rounded-sm" type="text" name="high_price" placeholder="Price start" />
                     </div>
-                </div>
+                    <input type="submit" className="bg-[#91D9D0] hover:bg-[#5beeddd4] duration-300 rounded-md text-xs font-medium md:text-lg text-white px-2 md:px-4 py-1 md:py-2" value="Filter" />
+                </form>
             </div>
             {/* <div className="overflow-x-auto">
                 <table className="table">
@@ -82,10 +84,8 @@ const Rooms = () => {
                                     <img className="w-[350px] h-[250px]" src={room?.room_img} alt="Room Img" />
                                 </div>
                                 <div className="flex justify-between items-center py-5 text-lg md:text-xl font-semibold px-5">
-                                    <h3>Total Reviews:</h3>
-                                    <h3>{
-                                        reviewData.filter(i => i?._room_title === room?.room_title)
-                                        }</h3>
+                                    <h3>Total Reviews: </h3>
+                                    <h3>{room?.total_review}</h3>
                                 </div>
                             </Link>
                         </Zoom>

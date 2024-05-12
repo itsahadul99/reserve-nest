@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { CiLocationOn } from "react-icons/ci";
 import { IoChatboxEllipsesOutline } from "react-icons/io5";
 import { MdOutlineEmail, MdPhone } from "react-icons/md";
@@ -7,6 +8,9 @@ const ContactUs = () => {
     return (
         <>
             <section className="py-12 max-w-7xl mx-auto">
+            <Helmet>
+                <title>Serve Nest || Contact Us</title>
+            </Helmet>
                 <div className="px-6 shadow-sm rounded-lg py-3 border">
                     <div>
                         <p className="font-medium text-[#69e9da] text-lg md:text-xl">Contact us</p>

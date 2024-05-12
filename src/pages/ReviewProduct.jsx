@@ -3,6 +3,7 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const ReviewProduct = () => {
     const { user } = useAuth()
@@ -13,7 +14,7 @@ const ReviewProduct = () => {
         const form = e.target;
         const comment = form.comment.value;
         const rating = form.rating.value;
-        const currentTime = new Date().toLocaleDateString();
+        const currentTime = new Date().toISOString();
         const reviewData = { comment, rating, user_name: user?.displayName, room_title: data?.room_title, user_profile_img: user?.photoURL, currentTime }
         axios.post(`${import.meta.env.VITE_API_URL}/reviews`, reviewData)
         .then(res => {
@@ -29,6 +30,9 @@ const ReviewProduct = () => {
     }
     return (
         <div className="max-w-7xl mx-auto my-5 md:my-10">
+            <Helmet>
+                <title>Serve Nest || Review Room</title>
+            </Helmet>
             <div>
                 <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-center">Write your review here</h1>
                 <form onSubmit={handleReview} className="w-full md:w-1/2 mx-auto my-5 md:my-10 shadow-md p-5 bg-gray-50">

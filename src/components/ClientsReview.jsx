@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
 const ClientsReview = () => {
     const [reviewData, setReviewData] = useState([])
     useEffect(() => {
@@ -22,15 +22,11 @@ const ClientsReview = () => {
             <Swiper
                 centeredSlides={true}
                 loop={true}
-                autoplay={{
-                    delay: 2500,
-                    disableOnInteraction: false,
-                }}
                 pagination={{
                     clickable: true,
                 }}
                 navigation={true}
-                modules={[Autoplay, Pagination, Navigation]}>
+                modules={[ Navigation]}>
                 {
                     reviewData?.map(r => <SwiperSlide key={r?._id}>
                         <div className="bg-gray-50">

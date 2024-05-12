@@ -5,6 +5,7 @@ import axios from "axios";
 import { FaStar } from "react-icons/fa";
 import { Zoom } from "react-awesome-reveal";
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const RoomDetails = () => {
     const { user } = useAuth();
@@ -63,6 +64,9 @@ const RoomDetails = () => {
     console.log(reviewData);
     return (
         <div className="max-w-7xl mx-auto min-h-[calc(100vh-365px)] px-5 my-5 md:my-8 lg:my-10">
+            <Helmet>
+                <title>Serve Nest || Room Details Page</title>
+            </Helmet>
             <div className="space-y-5 flex flex-col md:flex-row gap-5 justify-between items-start md:gap-10">
                 <Zoom className="w-full md:w-1/2 mt-5" duration={1200}>
                     <img className="bg-cover h-[350px] rounded-md" src={room_img} alt="" />

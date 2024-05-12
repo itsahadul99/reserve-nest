@@ -3,13 +3,15 @@ import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const MyBookings = () => {
     const { user } = useAuth();
     const [displayBooking, setDisplayBooking] = useState([])
     useEffect(() => {
-        axios(`${import.meta.env.VITE_API_URL}/my-booking/${user?.email}`)
+        axios(`${import.meta.env.VITE_API_URL}/my-booking/${user?.email}`, {withCredentials: true})
             .then(res => {
+                console.log(res.data);
                 setDisplayBooking(res.data);
             })
     }, [user])
@@ -42,6 +44,9 @@ const MyBookings = () => {
     }
     return (
         <div className="max-w-7xl mx-auto min-h-[calc(100vh-365px)] px-5 my-5 md:my-8 lg:my-10">
+            <Helmet>
+                <title>Serve Nest || My Bookings</title>
+            </Helmet>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}

@@ -7,12 +7,15 @@ import AuthProvider from './provider/AuthProvider.jsx'
 import { Toaster } from 'react-hot-toast'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { HelmetProvider } from 'react-helmet-async'
 AOS.init();
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router}></RouterProvider>
-      <Toaster />
-    </AuthProvider>
+    <HelmetProvider>
+      <AuthProvider>
+        <RouterProvider router={router}></RouterProvider>
+        <Toaster />
+      </AuthProvider>
+    </HelmetProvider>
   </React.StrictMode>,
 )
