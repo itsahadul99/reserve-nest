@@ -47,7 +47,7 @@ const RoomDetails = () => {
                     .then(res => {
                         if (res.data.insertedId) {
                             const updateAvailability = { availability: 'unavailable' }
-                            axios.patch(`${import.meta.env.VITE_API_URL}/update-status/${roomData?._id}`, updateAvailability)
+                            axios.patch(`${import.meta.env.VITE_API_URL}/update-status/${roomData?.room_title}`, updateAvailability)
                             Swal.fire({
                                 title: "Success!",
                                 text: "Your successfully book this room.",
@@ -61,7 +61,6 @@ const RoomDetails = () => {
         });
     }
     const filter = reviewData.filter(i => i?.room_title === room_title);
-    console.log(reviewData);
     return (
         <div className="max-w-7xl mx-auto min-h-[calc(100vh-365px)] px-5 my-5 md:my-8 lg:my-10">
             <Helmet>
@@ -86,7 +85,7 @@ const RoomDetails = () => {
                         <form onSubmit={handleBookNow} className="flex flex-col gap-3 w-full lg:w-1/2">
                             <label htmlFor="date" className="text-sm md:text-lg font-semibold" >Pick a date: </label>
                             <input type="date" name="email" className="border py-1 px-2 font-semibold rounded-md text-sm md:text-lg" required />
-                            <input type="submit" value="Book Now" className="px-2 md:px-4 py-1 md:py-2 bg-[#91D9D0] hover:bg-[#5beeddd4] duration-300 rounded-md text-xs font-medium md:text-lg text-white"></input>
+                            <input type="submit" value="Book Now" className="px-2 md:px-4 py-1 md:py-2 bg-secondary hover:bg-primary duration-300 rounded-md text-xs font-medium md:text-lg text-white"></input>
                         </form>
                     </div>
                 </div>

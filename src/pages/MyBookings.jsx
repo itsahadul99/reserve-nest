@@ -11,11 +11,11 @@ const MyBookings = () => {
     useEffect(() => {
         axios(`${import.meta.env.VITE_API_URL}/my-booking/${user?.email}`, {withCredentials: true})
             .then(res => {
-                console.log(res.data);
                 setDisplayBooking(res.data);
             })
     }, [user])
-    const handleCancelButton = id => {
+    const handleCancelButton = (id, title) => {
+        console.log(title);
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -29,6 +29,8 @@ const MyBookings = () => {
                 axios.delete(`${import.meta.env.VITE_API_URL}/my-booking/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
+                            const updateAvailability = { availability: 'available' }
+                            axios.patch(`${import.meta.env.VITE_API_URL}/update-status/${title}`, updateAvailability)
                             Swal.fire({
                                 title: "Canceled!",
                                 text: "You successfully cancel your booking.",
@@ -50,7 +52,7 @@ const MyBookings = () => {
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
-                    <thead className="text-sm md:text-lg font-semibold text-[#91D9D0]">
+                    <thead className="text-sm md:text-lg font-semibold text-primary">
                         <tr>
                             <th>Room Name: </th>
                             <th>Price / <span className="text-xs">night</span></th>
@@ -66,15 +68,15 @@ const MyBookings = () => {
                                 <td>{data?.booking_date}</td>
                                 <td className="text-center space-x-2 space-y-2">
                                     <button
-                                        onClick={() => handleCancelButton(data?._id)}
-                                        className="px-2 md:px-4 py-1 md:py-2 bg-[#91D9D0] hover:bg-[#5beeddd4] duration-300 rounded-md text-xs font-medium text-white"
+                                        onClick={() => handleCancelButton(data?._id, data?.room_title)}
+                                        className="px-2 md:px-4 py-1 md:py-2 bg-primary hover:bg-secondary duration-300 rounded-md text-xs font-medium text-white"
                                     >Cancel</button>
                                     <Link to={`/update-date/${data?._id}`}
-                                        className="px-2 md:px-4 py-1 md:py-2 bg-[#91D9D0] hover:bg-[#5beeddd4] duration-300 rounded-md text-xs font-medium text-white"
+                                        className="px-2 md:px-4 py-1 md:py-2 bg-primary hover:bg-secondary duration-300 rounded-md text-xs font-medium text-white"
                                     >Update Date</Link>
                                     <Link
                                         to={`/review/${data?._id}`}
-                                        className="px-2 md:px-4 py-1 md:py-2 bg-[#91D9D0] hover:bg-[#5beeddd4] duration-300 rounded-md text-xs font-medium text-white"
+                                        className="px-2 md:px-4 py-1 md:py-2 bg-primary hover:bg-secondary duration-300 rounded-md text-xs font-medium text-white"
                                     >Review</Link>
                                 </td>
                             </tr>)

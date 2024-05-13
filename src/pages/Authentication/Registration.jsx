@@ -33,15 +33,15 @@ const Registration = () => {
             toast.error(err?.message);
         })
     }
-    if(user || loading){
-        return <Navigate to="/"></Navigate>;
-      }
+    // if(user || loading){
+    //     return <Navigate to="/"></Navigate>;
+    //   }
     return (
         <div className='my-5 md:my-8 lg:my-10 flex justify-center items-center min-h-[calc(100vh-80px)]'>
             <div className='flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl '>
                 <div className='w-full px-6 py-8 md:px-8 lg:w-1/2'>
                     <div className='flex justify-center mx-auto'>
-                        <h1 className="cursor-pointer text-lg md:text-2xl lg:text-3xl font-bold">Reserve<span className="text-[#91D9D0]">Nest</span></h1>
+                        <h1 className="cursor-pointer text-lg md:text-2xl lg:text-3xl font-bold">Reserve<span className="text-primary">Nest</span></h1>
                     </div>
 
                     <p className='mt-3 text-xl text-center text-gray-600 '>

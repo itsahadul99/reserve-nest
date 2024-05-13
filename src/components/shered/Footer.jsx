@@ -4,7 +4,7 @@ const Footer = () => {
         <footer className="bg-black text-[#FFFF]">
             <div className="max-w-7xl mx-auto py-5 md:py-8 lg:py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 justify-center items-center *:flex *:flex-col *:mx-auto border-b border-b-white">
                 <div className="text-center space-y-5">
-                    <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-opacity-100 ">Reserve<span className="text-[#91D9D0]">Nest</span></h3>
+                    <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-opacity-100 ">Reserve<span className="text-primary">Nest</span></h3>
                     <p className="text-xs md:text-sm opacity-55">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus magnam amet nisi necessitatibus expedita, mollitia dignissimos exercitationem esse ab aperiam?</p>
                 </div>
                 <div>

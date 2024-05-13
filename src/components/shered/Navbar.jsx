@@ -11,7 +11,7 @@ const Navbar = () => {
                 <NavLink to="/"
                     className={({ isActive }) =>
                         isActive
-                            ? "pb-1 border-b-0 text-[#91D9D0] lg:border-b-2 border-[#91D9D0] font-bold"
+                            ? "pb-1 border-b-0 text-secondary lg:border-b-2 border-primary font-bold"
                             : "font-bold "
                     }
                 >Home
@@ -21,7 +21,7 @@ const Navbar = () => {
                 <NavLink to="/rooms"
                     className={({ isActive }) =>
                         isActive
-                            ? "pb-1 border-b-0 text-[#91D9D0] lg:border-b-2 border-[#91D9D0] font-bold"
+                            ? "pb-1 border-b-0 text-primary lg:border-b-2 border-primary font-bold"
                             : "font-bold "
                     }
                 >Rooms
@@ -31,7 +31,7 @@ const Navbar = () => {
                 <NavLink to="/my-bookings"
                     className={({ isActive }) =>
                         isActive
-                            ? "pb-1 border-b-0 text-[#91D9D0] lg:border-b-2 border-[#91D9D0] font-bold"
+                            ? "pb-1 border-b-0 text-primary lg:border-b-2 border-primary font-bold"
                             : "font-bold "
                     }
                 >My Bookings
@@ -41,7 +41,7 @@ const Navbar = () => {
                 <NavLink to="/contact"
                     className={({ isActive }) =>
                         isActive
-                            ? "pb-1 text-[#91D9D0] border-b-0 lg:border-b-2 border-[#91D9D0] font-bold"
+                            ? "pb-1 text-primary border-b-0 lg:border-b-2 border-primary font-bold"
                             : "font-bold pb-1"
                     }
                 >Contact Us
@@ -51,7 +51,7 @@ const Navbar = () => {
                 <NavLink to="/about"
                     className={({ isActive }) =>
                         isActive
-                            ? "pb-1 text-[#91D9D0] border-b-0 lg:border-b-2 border-[#91D9D0] font-bold"
+                            ? "pb-1 text-primary border-b-0 lg:border-b-2 border-primary font-bold"
                             : "font-bold pb-1"
                     }
                 >About Us
@@ -80,7 +80,7 @@ const Navbar = () => {
                             {navLinks}
                         </ul>
                     </div>
-                    <h1 className="cursor-pointer text-lg md:text-2xl lg:text-3xl font-bold">Reserve<span className="text-[#91D9D0]">Nest</span></h1>
+                    <h1 className="cursor-pointer text-lg md:text-2xl lg:text-3xl text-secondary font-bold">Reserve<span className="text-primary">Nest</span></h1>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="flex items-center justify-center gap-3 md:gap-6">
@@ -114,7 +114,7 @@ const Navbar = () => {
                                 </ul>
                             </div>
                             :
-                            <Link to="/login" className="px-2 md:px-4 py-1 md:py-2 bg-[#91D9D0] hover:bg-[#5beeddd4] duration-300 rounded-md text-xs font-medium md:text-lg text-white">Login</Link>
+                            <Link to="/login" className="px-2 md:px-4 py-1 md:py-2 bg-secondary hover:bg-primary duration-300 rounded-md text-xs font-medium md:text-lg text-white">Login</Link>
                     }
                 </div>
             </div>

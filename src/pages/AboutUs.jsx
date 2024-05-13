@@ -59,7 +59,7 @@ const AboutUs = () => {
                             </div>
                         </div>
                         <div>
-                            <Link to="/rooms" className="px-2 md:px-4 py-1 md:py-2 hover:bg-[#91D9D0] bg-[#5beeddd4] duration-300 rounded-md text-xs font-medium md:text-lg text-black">Book Room</Link>
+                            <Link to="/rooms" className="px-2 md:px-4 py-1 md:py-2 hover:bg-primary bg-secondary duration-300 rounded-md text-xs font-medium md:text-lg text-black">Book Room</Link>
                         </div>
                     </div>
                 </Fade>

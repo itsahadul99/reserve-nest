@@ -76,7 +76,7 @@ const ReviewProduct = () => {
                         </div>
                     </div>
                     <div className='flex justify-end mt-6'>
-                        <button className='px-2 md:px-6 py-1 md:py-2 hover:bg-[#91D9D0] bg-[#5beeddd4] duration-300 rounded-md text-sm md:text-lg font-medium text-white'>
+                        <button className='px-2 md:px-6 py-1 md:py-2 hover:bg-primary bg-secondary duration-300 rounded-md text-sm md:text-lg font-medium text-white'>
                             Save Review
                         </button>
                     </div>

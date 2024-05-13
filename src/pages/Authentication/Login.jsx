@@ -3,9 +3,8 @@ import useAuth from "../../hooks/useAuth"
 import toast from "react-hot-toast"
 
 const Login = () => {
-    const {logIn, signInWithGoogle, user, loading} = useAuth()
+    const {logIn, signInWithGoogle, user} = useAuth()
     const location = useLocation();
-    console.log(location);
     const navigate = useNavigate()
     const handleLogIn = e => {
         e.preventDefault()
@@ -17,8 +16,8 @@ const Login = () => {
             toast.success("Login successfully")
             navigate(location?.state ? location?.state : '/')
         })
-        .catch(err => {
-            toast.error(err?.message)
+        .catch((error) => {
+            toast.error(error?.message)
         })
     }
     const handleGoogleLogin = () => {
@@ -31,7 +30,7 @@ const Login = () => {
             toast.error(err?.message);
         })
     }
-    if(user || loading){
+    if(user){
         return <Navigate to="/"></Navigate>;
       }
     return (
@@ -46,7 +45,7 @@ const Login = () => {
 
                 <div className='w-full px-6 py-8 md:px-8 lg:w-1/2'>
                     <div className='flex justify-center mx-auto'>
-                        <h1 className="cursor-pointer text-lg md:text-2xl lg:text-3xl font-bold">Reserve<span className="text-[#91D9D0]">Nest</span></h1>
+                        <h1 className="cursor-pointer text-lg md:text-2xl lg:text-3xl font-bold">Reserve<span className="text-primary">Nest</span></h1>
                     </div>
 
                     <p className='mt-3 text-xl text-center text-gray-600 '>
