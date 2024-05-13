@@ -33,7 +33,7 @@ const Rooms = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8 items-center my-5 md:my-8 lg:my-10">
                 {
                     displayData?.map(room =>
-                        <Zoom key={room._id} duration={1500}>
+                        <Zoom key={room._id} duration={1000}>
                             <Link to={`/rooms/${room._id}`} className="card card-compact bg-base-100 shadow-lg hover:scale-105 duration-500 cursor-pointer">
                                 <div className="px-5 *:rounded-md">
                                     <img className="w-[350px] h-[250px]" src={room?.room_img} alt="Room Img" />
