@@ -4,6 +4,7 @@ import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import toast from "react-hot-toast";
 
 const MyBookings = () => {
     const { user } = useAuth();
@@ -14,8 +15,13 @@ const MyBookings = () => {
                 setDisplayBooking(res.data);
             })
     }, [user])
-    const handleCancelButton = (id, title) => {
-        console.log(title);
+    const handleCancelButton = (id, title, booking_date) => {
+        const currentDate = new Date()
+        const cancelDate = new Date(booking_date)
+        const cancel = cancelDate.setDate(cancelDate.getDate() - 1)
+        if(!(currentDate < cancel)){
+           return toast.error('You can not cancel this booking before 1 day remaining booking date ')
+        }
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -68,15 +74,15 @@ const MyBookings = () => {
                                 <td>{data?.booking_date}</td>
                                 <td className="text-center space-x-2 space-y-2">
                                     <button
-                                        onClick={() => handleCancelButton(data?._id, data?.room_title)}
-                                        className="px-2 md:px-4 py-1 md:py-2 bg-primary hover:bg-secondary duration-300 rounded-md text-xs font-medium text-white"
+                                        onClick={() => handleCancelButton(data?._id, data?.room_title, data?.booking_date)}
+                                        className="px-2 md:px-4 py-1 md:py-2 bg-secondary hover:bg-primary duration-300 rounded-md text-xs font-medium text-white"
                                     >Cancel</button>
                                     <Link to={`/update-date/${data?._id}`}
-                                        className="px-2 md:px-4 py-1 md:py-2 bg-primary hover:bg-secondary duration-300 rounded-md text-xs font-medium text-white"
+                                        className="px-2 md:px-4 py-1 md:py-2 bg-secondary hover:bg-primary duration-300 rounded-md text-xs font-medium text-white"
                                     >Update Date</Link>
                                     <Link
                                         to={`/review/${data?._id}`}
-                                        className="px-2 md:px-4 py-1 md:py-2 bg-primary hover:bg-secondary duration-300 rounded-md text-xs font-medium text-white"
+                                        className="px-2 md:px-4 py-1 md:py-2 bg-secondary hover:bg-primary duration-300 rounded-md text-xs font-medium text-white"
                                     >Review</Link>
                                 </td>
                             </tr>)

@@ -21,7 +21,7 @@ const Navbar = () => {
                 <NavLink to="/rooms"
                     className={({ isActive }) =>
                         isActive
-                            ? "pb-1 border-b-0 text-primary lg:border-b-2 border-primary font-bold"
+                            ? "pb-1 border-b-0 text-secondary lg:border-b-2 border-primary font-bold"
                             : "font-bold "
                     }
                 >Rooms
@@ -31,7 +31,7 @@ const Navbar = () => {
                 <NavLink to="/my-bookings"
                     className={({ isActive }) =>
                         isActive
-                            ? "pb-1 border-b-0 text-primary lg:border-b-2 border-primary font-bold"
+                            ? "pb-1 border-b-0 text-secondary lg:border-b-2 border-primary font-bold"
                             : "font-bold "
                     }
                 >My Bookings
@@ -41,7 +41,7 @@ const Navbar = () => {
                 <NavLink to="/contact"
                     className={({ isActive }) =>
                         isActive
-                            ? "pb-1 text-primary border-b-0 lg:border-b-2 border-primary font-bold"
+                            ? "pb-1 text-secondary border-b-0 lg:border-b-2 border-primary font-bold"
                             : "font-bold pb-1"
                     }
                 >Contact Us
@@ -51,7 +51,7 @@ const Navbar = () => {
                 <NavLink to="/about"
                     className={({ isActive }) =>
                         isActive
-                            ? "pb-1 text-primary border-b-0 lg:border-b-2 border-primary font-bold"
+                            ? "pb-1 text-secondary border-b-0 lg:border-b-2 border-primary font-bold"
                             : "font-bold pb-1"
                     }
                 >About Us

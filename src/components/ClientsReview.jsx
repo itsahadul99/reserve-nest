@@ -30,10 +30,11 @@ const ClientsReview = () => {
                 {
                     reviewData?.map(r => <SwiperSlide key={r?._id}>
                         <div className="bg-gray-50">
-                            <div className="flex flex-col items-center w-full p-6 space-y-8 rounded-md lg:h-full lg:p-8 max-w-xl mx-auto border-x-2">
+                            <div className="flex flex-col items-center w-full p-6 rounded-md lg:h-full lg:p-8 max-w-xl mx-auto border-x-2">
                                 <img src={r?.user_profile_img} alt="" className="size-40 rounded-full " />
                                 <h1 className="text-lg md:text-xl lg:text-2xl font-bold">{r?.user_name}</h1>
-                                <div className="flex gap-2 items-center *:text-xl text-orange-400">
+                                <p className="text-xs font-medium opacity-80 mt-1">Review Time: {new Date(r?.currentTime).toLocaleTimeString()}</p>
+                                <div className="flex gap-2 items-center *:text-xl text-orange-400 mt-5">
                                     {
                                         r?.rating === '1' && <FaStar />
                                     }
@@ -50,7 +51,7 @@ const ClientsReview = () => {
                                         r?.rating === '5' && <><FaStar /> <FaStar /> <FaStar /> <FaStar /><FaStar /></>
                                     }
                                 </div>
-                                <blockquote className="max-w-lg text-lg italic font-medium text-center">"{r?.comment}"</blockquote>
+                                <blockquote className="max-w-lg text-lg italic font-medium text-center my-1">"{r?.comment}"</blockquote>
                                 <div className="text-center text-gray-400">
 
                                 </div>

@@ -1,29 +1,19 @@
 /* eslint-disable react/no-unescaped-entities */
 import axios from "axios";
-// import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Zoom } from "react-awesome-reveal";
 import { Helmet } from "react-helmet-async";
 import { Link, useLoaderData } from "react-router-dom";
 const Rooms = () => {
     const rooms = useLoaderData();
-    console.log(rooms);
-    // const [reviewData, setReviewData] = useState([])
-    // useEffect(() => {
-    //     axios(`${import.meta.env.VITE_API_URL}/rooms/filter`)
-    //     //     .then(res => {
-    //     //         setReviewData(res.data)
-    //     //     })
-    // }, [])
-    const handleFilter = e => {
-        e.preventDefault();
-        const form = e.target;
-        const minPrice = form.low_price.value;
-        const maxPrice = form.high_price.value;
-        const priceData = {minPrice, maxPrice}
-        axios.post(`${import.meta.env.VITE_API_URL}/rooms-filter`, priceData)
-        .then(res => {
-            console.log(res.data);
-        })
+    const [displayData, setDisplayData] = useState(rooms)
+    const [minPrice, setMinPrice] = useState('');
+    const [maxPrice, setMaxPrice] = useState('');
+    const handleFilter = () => {
+        axios.post(`${import.meta.env.VITE_API_URL}/rooms/filter`, { maxPrice, minPrice })
+            .then(res => {
+                setDisplayData(res.data);
+            })
     }
     return (
         <div className="max-w-7xl mx-auto min-h-[calc(100vh-365px)] px-5">
@@ -32,13 +22,13 @@ const Rooms = () => {
             </Helmet>
             <div className="flex justify-between items-center my-5">
                 <h1 className="text-lg md:text-2xl lg:text-3xl font-bold">Our's Rooms</h1>
-                <form onSubmit={handleFilter} className="flex flex-col justify-center items-center space-y-2">
+                <div className="flex flex-col justify-center items-center space-y-2">
                     <div>
-                        <input className="border p-1 bg-gray-100 rounded-sm mr-2" type="text" name="low_price" placeholder="Min price" />
-                        <input className="border p-1 bg-gray-100 rounded-sm" type="text" name="high_price" placeholder="Max price" />
+                        <input value={minPrice} onChange={(e) => setMinPrice(e.target.value)} className="border p-1 bg-gray-100 rounded-sm mr-2" type="text" name="low_price" placeholder="Min price" />
+                        <input value={maxPrice} onChange={(e) => setMaxPrice(e.target.value)} className="border p-1 bg-gray-100 rounded-sm" type="text" name="high_price" placeholder="Max price" />
                     </div>
-                    <input type="submit" className="bg-secondary hover:bg-primary duration-300 rounded-md text-xs font-medium md:text-lg text-white px-2 md:px-4 py-1 md:py-2" value="Filter" />
-                </form>
+                    <input onClick={handleFilter} type="submit" className="bg-secondary hover:bg-primary duration-300 rounded-md text-xs font-medium md:text-lg text-white px-2 md:px-4 py-1 md:py-2" value="Filter" />
+                </div>
             </div>
             {/* <div className="overflow-x-auto">
                 <table className="table">
@@ -81,7 +71,7 @@ const Rooms = () => {
             {/* rooms card  */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8 items-center my-5 md:my-8 lg:my-10">
                 {
-                    rooms.map(room =>
+                    displayData?.map(room =>
                         <Zoom key={room._id} duration={1500}>
                             <Link to={`/rooms/${room._id}`} className="card card-compact bg-base-100 shadow-lg hover:scale-105 duration-500 cursor-pointer">
                                 <div className="px-5 *:rounded-md">
@@ -96,6 +86,13 @@ const Rooms = () => {
                     )
                 }
             </div>
+                {
+                    displayData.length === 0 && <div className="flex flex-col justify-center items-center space-y-3 pb-12">
+                        <img className="w-36" src={'https://i.ibb.co/0ttkf0m/pngegg.png'} alt="" />
+                        <h1 className="font-semibold text-lg md:text-xl lg:text-2xl">There is no rooms at this price range</h1>
+                        <p className="font-semibold">Please change price range </p>
+                    </div>
+                }
         </div>
     );
 };

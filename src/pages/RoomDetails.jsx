@@ -101,7 +101,7 @@ const RoomDetails = () => {
                             <div className="space-y-2">
                                 <div className="mb-3">
                                     <h1 className="text-lg md:text-xl font-bold">{r?.user_name}</h1>
-                                    <p className="text-xs font-medium opacity-80">{r?.currentTime}</p>
+                                    <p className="text-xs font-medium opacity-80">{new Date(r?.currentTime).toLocaleDateString()}</p>
                                 </div>
                                 <div className="flex gap-2 items-center text-orange-400">
                                     {
