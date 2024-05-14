@@ -27,16 +27,18 @@ const Navbar = () => {
                 >Rooms
                 </NavLink>
             </li>
-            <li>
-                <NavLink to="/my-bookings"
-                    className={({ isActive }) =>
-                        isActive
-                            ? "pb-1 border-b-0 text-secondary lg:border-b-2 border-primary font-bold"
-                            : "font-bold "
-                    }
-                >My Bookings
-                </NavLink>
-            </li>
+            {
+                user && <li>
+                    <NavLink to="/my-bookings"
+                        className={({ isActive }) =>
+                            isActive
+                                ? "pb-1 border-b-0 text-secondary lg:border-b-2 border-primary font-bold"
+                                : "font-bold "
+                        }
+                    >My Bookings
+                    </NavLink>
+                </li>
+            }
             <li>
                 <NavLink to="/contact"
                     className={({ isActive }) =>
@@ -60,13 +62,13 @@ const Navbar = () => {
         </>
     const handleLogOut = () => {
         logOut()
-        .then(() => {
-            toast.success("Logout successfully")
-            navigate('/')
-        })
-        .catch(err => {
-            toast.error(err?.message)
-        })
+            .then(() => {
+                toast.success("Logout successfully")
+                navigate('/')
+            })
+            .catch(err => {
+                toast.error(err?.message)
+            })
     }
     return (
         <div className="bg-base-100 px-5 py-2 shadow-md">
