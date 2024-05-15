@@ -4,12 +4,14 @@ import { useState } from "react";
 import { Zoom } from "react-awesome-reveal";
 import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
+import { LuLayoutGrid, LuLayoutList } from "react-icons/lu";
 import { Link, useLoaderData } from "react-router-dom";
 const Rooms = () => {
     const rooms = useLoaderData();
     const [displayData, setDisplayData] = useState(rooms)
     const [minPrice, setMinPrice] = useState('');
     const [maxPrice, setMaxPrice] = useState('');
+    const [toggle, setToggle] = useState(false)
     const handleFilter = () => {
         if (minPrice === '' || maxPrice === '' || parseFloat(minPrice) > parseFloat(maxPrice)) {
             return toast.error("Please select price correctly")
@@ -24,6 +26,12 @@ const Rooms = () => {
             <Helmet>
                 <title>Serve Nest || Rooms Page</title>
             </Helmet>
+            <div className="mt-3 flex gap-3 justify-end">
+                <p className="text-sm font-bold">Change Layout</p>
+                <button onClick={() => setToggle(!toggle)}>
+                    { toggle ?<LuLayoutList size={20} />: <LuLayoutGrid size={20} />}
+                </button>
+            </div>
             <div className="flex justify-between items-center my-5">
                 <h1 className="text-lg md:text-2xl lg:text-3xl font-bold">Our's Rooms</h1>
                 <div className="flex flex-col justify-center items-center space-y-2">
@@ -36,7 +44,7 @@ const Rooms = () => {
             </div>
 
             {/* implement letter */}
-            {/* <div className="overflow-x-auto">
+            { toggle === true ? <div className="overflow-x-auto my-5">
                 <table className="table">
                     <thead>
                         <tr className="text-sm md:text-lg">
@@ -57,14 +65,14 @@ const Rooms = () => {
                                 </td>
                                 <td className="font-semibold">${room?.price_per_night} / <span className="font-normal">night</span></td>
                                 <th>
-                                    <button to={`/rooms/${room._id}`} className="btn btn-ghost btn-xs">View Details</button>
+                                    <Link to={`/rooms/${room._id}`} className="btn btn-ghost btn-xs bg-secondary">View Details</Link>
                                 </th>
                             </tr>)
                         }
                     </tbody>
 
                 </table>
-            </div> */}
+            </div>:
             <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8 items-center my-5 md:my-8 lg:my-10">
                 {
                     displayData?.map(room =>
@@ -81,7 +89,7 @@ const Rooms = () => {
                         </Zoom>
                     )
                 }
-            </div>
+            </div>}
             {
                 displayData.length === 0 && <div className="flex flex-col justify-center items-center space-y-3 pb-12">
                     <img className="w-36" src={'https://i.ibb.co/0ttkf0m/pngegg.png'} alt="" />
