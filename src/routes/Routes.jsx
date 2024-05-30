@@ -12,6 +12,7 @@ import PrivateRoute from "./PrivateRoute";
 import MyBookings from "../pages/MyBookings";
 import UpdateDate from "../pages/UpdateDate";
 import ReviewProduct from "../pages/ReviewProduct";
+import UpdateProfile from "../pages/Profile/UpdateProfile";
 
 const router = createBrowserRouter([
     {
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
                 path: '/review/:id',
                 element: <ReviewProduct />,
                 loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/update-date/${params.id}`)
+            },
+            {
+                path: '/update-profile',
+                element: <UpdateProfile />
             }
         ]
     }

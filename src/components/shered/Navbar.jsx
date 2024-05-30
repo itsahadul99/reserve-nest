@@ -112,6 +112,14 @@ const Navbar = () => {
                                     className='menu menu-sm dropdown-content mt-3 z-30 p-2 shadow bg-base-100 rounded-box w-52'
                                 >
                                     <li className='mt-2'>
+                                        <button className='bg-gray-200 block text-center'>{user?.displayName}</button>
+                                    </li>
+                                    <Link to='/update-profile'>
+                                        <li className='mt-2'>
+                                            <button className='bg-gray-200 block text-center'>Update Profile</button>
+                                        </li>
+                                    </Link>
+                                    <li className='mt-2'>
                                         <button onClick={handleLogOut} className='bg-gray-200 block text-center'>Logout</button>
                                     </li>
                                 </ul>
